@@ -1,0 +1,11 @@
+django-debug-toolbar
+
+ruff
+mypy
+nox
+pre-commit
+
+pytest
+pytest-bdd
+pytest-django
+PyHamcrest

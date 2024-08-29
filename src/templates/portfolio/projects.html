@@ -1,0 +1,98 @@
+<!--
+Copyright (c) 2024 INSPXRXD
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+{% extends 'base.html' %}
+{% load static %}
+{% load portfolio_tags %}
+
+{% block title %}Projects{% endblock title %}
+
+{% block content %}
+<div class='bg-gray-800 text-white p-5 md:py-8 md:px-20 lg:px-40 xl:px-60'>
+    <p style="font-family: Montserrat ExtraLight" class='text-4xl font-extrabold py-5 text-center md:text-start'>
+        My Projects
+    </p>
+        {% for project in projects %}
+            <div style="box-shadow:0 5px 30px 0 rgba(0,0,0,.05);"
+                 class='flex flex-col md:flex-row gap-4 md:gap-x-8 bg-gray-900 p-5 mb-4 rounded-lg'>
+                <img class="post-img-url rounded-lg object-cover"
+                     width='350px'
+                     height='180px'
+                     src="{{ project.thumbnail_url|safe }}"
+                     alt="image">
+                <div>
+                    <p class="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-white">
+                        {{ project.title }}
+                    </p>
+                    <p class='text-justify my-3'>{{ project.description }}</p>
+
+                    <ul class='mb-3'>
+                    {% for feature in project.feature_list %}
+                        <li>{% feature_emoji %} {{ feature }}</li>
+                    {% endfor %}
+                    </ul>
+
+                    <span class='text-lg font-bold'>Technologies used</span><br>
+                    <div class='flex space-x-2 my-3'>
+                    {% for technology in project.technology_list %}
+                        <span class='text-xs bg-gradient-to-r from-pink-800 to-red-400 py-1 px-4 rounded-full'>
+                            {{ technology }}
+                        </span>
+                    {% endfor %}
+                    </div>
+                    <div class='flex space-x-4 my-3'>
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target='_blank' class=''>
+                                <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-slate-700 outline
+                                               hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3'>
+                                    <i class="bi bi-github"></i> Github
+                                </button>
+                            </a>
+                        {% endif %}
+                        {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target='_blank'>
+                                <button class='bg-gradient-to-r from-red-300 to-red-600 p-2 px-4 rounded-[6px]
+                                               hover:bg-gray-800 hover:outline hover:outline-red-600 transition
+                                               delay-75 ease-in-out my-3'>
+                                    Demo <i class="bi bi-box-arrow-up-right"></i>
+                                </button>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    <ul class='flex justify-center'>
+        <div class='relative group'>
+            <div class='bg-gradient-to-r from-red-300 to-red-600 px-6 py-2 text-white rounded-md -inset-0.5 absolute
+                        blur-sm opacity-75 group-hover:-inset-1 transition group-hover:duration-400 group-hover:opacity-90
+                        duration-1000'>
+            </div>
+            <a href='https://github.com/INSPXRXD' class=''>
+                <button class='relative bg-gray-800 px-7 py-2 text-white rounded-md group-hover:text-gray-50 transition
+                               duration-200'>Load more <i class="bi bi-arrow-clockwise font-extrabold"></i>
+                </button>
+            </a>
+        </div>
+    </ul>
+</div>
+{% endblock %}

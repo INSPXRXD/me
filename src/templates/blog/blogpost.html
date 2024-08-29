@@ -1,0 +1,101 @@
+<!--
+Copyright (c) 2024 INSPXRXD
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ blog.title }}{% endblock title %}
+
+{% block content %}
+
+<div style="font-family: Montserrat ExtraLight" class='bg-gray-800 text-white p-8 pt-12 flex flex-col md:px-20 lg:px-36
+                                                       xl:px-60 2xl:px-80'>
+    <span class='text-center text-3xl md:text-4xl font-bold text-cyan-200 hover:text-cyan-300 transition duration-300'>
+        {{ blog.title }}
+    </span>
+    <span class='text-center mt-2 text-gray-400'>
+        by
+        <a href='/about'><i class="bi bi-person"></i>
+            <span class='group'>
+                <span class='group-hover:text-cyan-200 bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500
+                            bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500
+                            ease-out'>
+                    INSPXRXD
+                </span>
+            </span>
+            <a>
+                <i class="bi bi-dot"></i>
+                <span><i class="bi bi-calendar4-event"></i> {{ blog.time }}</span>
+                <i class="bi bi-dot"></i> <i class="bi bi-tag"></i>
+                <a href='/category/{{ blog.category }}'>
+                    <span class='group'>
+                        <span class='group-hover:text-cyan-200 bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500
+                                    bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all
+                                    duration-500 ease-out'>
+                            {{ blog.category }}
+                        </span>
+                    </span>
+                </a>
+            </a>
+        </a>
+    </span>
+    <img class='rounded-lg my-6 flex justify-center' src="{{ blog.thumbnail_url }}">
+    <p class=''>{{ blog.content|safe }} </p>
+</div>
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: revert;
+        font-weight: revert;
+    }
+
+    {% comment %} ol,
+    ul {
+        list-style: revert;
+        margin: revert;
+        padding: revert;
+    } {% endcomment %}
+    p a {
+        color: #67e8f9;
+        background:
+          linear-gradient(to right, rgba(103,232,249, 1), rgba(59, 130, 246, 1)),
+          linear-gradient(to right, rgba(34,211,238, 1), rgba(59, 130, 246, 1), rgba(29, 78, 216, 1));
+        background-size: 100% 0.1em, 0 0.1em;
+        background-position: 100% 100%, 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 400ms;
+    }
+
+    p a:hover,
+    p a:focus {
+        background-size: 0 0.1em, 100% 0.1em;
+    }
+    p img {
+        border-radius: 8px;
+    }
+</style>
+
+{% endblock %}
