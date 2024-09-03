@@ -36,39 +36,39 @@ SOFTWARE.
                 <img class="post-img-url rounded-lg object-cover"
                      width='350px'
                      height='180px'
-                     src="{{ project.thumbnail_url|safe }}"
+                     src="{{ project.asset.thumbnail_url|safe }}"
                      alt="image">
                 <div>
                     <p class="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-white">
                         {{ project.title }}
                     </p>
-                    <p class='text-justify my-3'>{{ project.description }}</p>
+                    <p class='text-justify my-3'>{{ project.content.description }}</p>
 
                     <ul class='mb-3'>
-                    {% for feature in project.feature_list %}
+                    {% for feature in project.content.features_list %}
                         <li>{% feature_emoji %} {{ feature }}</li>
                     {% endfor %}
                     </ul>
 
                     <span class='text-lg font-bold'>Technologies used</span><br>
                     <div class='flex space-x-2 my-3'>
-                    {% for technology in project.technology_list %}
+                    {% for technology in project.content.technologies_list %}
                         <span class='text-xs bg-gradient-to-r from-pink-800 to-red-400 py-1 px-4 rounded-full'>
                             {{ technology }}
                         </span>
                     {% endfor %}
                     </div>
                     <div class='flex space-x-4 my-3'>
-                        {% if project.github_url %}
-                            <a href="{{ project.github_url }}" target='_blank' class=''>
+                        {% if project.reference.github_url %}
+                            <a href="{{ project.reference.github_url }}" target='_blank' class=''>
                                 <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-slate-700 outline
                                                hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3'>
                                     <i class="bi bi-github"></i> Github
                                 </button>
                             </a>
                         {% endif %}
-                        {% if project.demo_url %}
-                            <a href="{{ project.demo_url }}" target='_blank'>
+                        {% if project.reference.demo_url %}
+                            <a href="{{ project.reference.demo_url }}" target='_blank'>
                                 <button class='bg-gradient-to-r from-red-300 to-red-600 p-2 px-4 rounded-[6px]
                                                hover:bg-gray-800 hover:outline hover:outline-red-600 transition
                                                delay-75 ease-in-out my-3'>

@@ -45,7 +45,7 @@ DEV_REQUIREMENTS: typing.Final[tuple[str, ...]] = (
 )
 
 
-@nox.session
+@nox.session(python=["3.10", "3.11"])
 def pytest(session: nox.Session) -> None:
     session.install(*DEV_REQUIREMENTS)
     session.install(*BASE_REQUIREMENTS)

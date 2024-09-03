@@ -29,7 +29,7 @@ import enum
 import typing
 
 
-class BlogCategory(enum.StrEnum):
+class BlogCategory(str, enum.Enum):
     """
     The category of the blog, which is the topic on which
     the blog is written.
@@ -52,3 +52,6 @@ class BlogCategory(enum.StrEnum):
     various patterns, and approaches in business 
     application design.
     """
+
+    def __str__(self) -> str:
+        return str(self.value)
