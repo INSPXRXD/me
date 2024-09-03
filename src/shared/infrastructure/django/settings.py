@@ -41,8 +41,8 @@ BASE_DIR = dirs.BASE_DIR
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TESTING = True
+DEBUG = False
+TESTING = False
 
 ALLOWED_HOSTS = ["*"]
 
