@@ -25,7 +25,6 @@ __all__: typing.Sequence[str] = ("urlpatterns",)
 
 import typing
 
-from debug_toolbar import toolbar
 from django import urls
 from django.contrib import admin
 
@@ -49,4 +48,6 @@ urlpatterns = [
 
 
 if settings.TESTING:
+    from debug_toolbar import toolbar
+
     urlpatterns.extend(toolbar.debug_toolbar_urls())

@@ -22,6 +22,8 @@ import typing
 BASE_DIR = pathlib.Path(__file__).parent.parent
 """The root directory (src) of the project."""
 
+ROOT_DIR = BASE_DIR.parent
+
 BLOGS_DIR = BASE_DIR / "modules" / "blog" / "application" / "sources"
 """
 The directory where corresponding views in PDF format will be saved 

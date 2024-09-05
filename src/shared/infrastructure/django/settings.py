@@ -68,10 +68,11 @@ MIGRATION_MODULES = {
 }
 
 TAILWIND_APP_NAME = "theme"
+TAILWIND_CSS_PATH = "theme/static_src/src/styles.css"
 
 INTERNAL_IPS = ["127.0.0.1"]
 
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+#NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
@@ -163,12 +164,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_URL = "staticfiles/"
+STATIC_URL = "/static/"
 
 if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STORAGES = {
         "staticfiles": {
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
